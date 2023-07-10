@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Challenge 1</h1>
+    <script>
+        function sortArrayWithStructure(arr) {
+  // Separate numbers and letters
+  const numbers = arr.filter((item) => typeof item === 'number');
+  const letters = arr.filter((item) => typeof item === 'string');
+  
+  // Sort numbers and letters
+  const sortedNumbers = numbers.sort((a, b) => a - b);
+  const sortedLetters = letters.sort();
+  
+  // Combine sorted numbers and letters with the original structure
+  let result = [];
+  let numbersIndex = 0;
+  let lettersIndex = 0;
+  
+  for (let i = 0; i < arr.length; i++) {
+    if (typeof arr[i] === 'number') {
+      result.push(sortedNumbers[numbersIndex]);
+      numbersIndex++;
+    } else {
+      result.push(sortedLetters[lettersIndex]);
+      lettersIndex++;
+    }
+  }
+  
+  return result;
+}
+
+// Example usage
+const arr = [3, 'b', 1, 'a', 2];
+console.log("array before sorting:"+arr)
+const sortedArr = sortArrayWithStructure(arr);
+console.log("array after sorting"+sortedArr); // Output: [1, 'a', 2, 'b', 3]
+
+    </script>
+</body>
+</html>
